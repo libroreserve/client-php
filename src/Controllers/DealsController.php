@@ -191,13 +191,14 @@ class DealsController extends BaseController
      * @throws APIException Thrown if API call fails
      */
     public function addADeal(
-        $body = null
+        $body = null,
+        $endpoint = '/deals'
     ) {
         //check or get oauth token
         OAuthManager::getInstance()->checkAuthorization();
 
         //prepare query string for API call
-        $_queryBuilder = '/deals';
+        $_queryBuilder = $endpoint;
 
         //validate and preprocess url
         $_queryUrl = APIHelper::cleanUrl(Configuration::getBaseUri() . $_queryBuilder);
